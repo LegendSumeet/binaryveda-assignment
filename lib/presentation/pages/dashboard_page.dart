@@ -259,11 +259,11 @@ class DashboardPage extends StatelessWidget {
                         'assets/icons.svg',
                         width: 28.970731735229492,
                         height: 34.3414421081543,
-
                         color: Colors.black,
                       ),
                       const SizedBox(height: 8),
-                      Text('Revenue',
+                      Text(
+                        'Revenue',
                         style: GoogleFonts.barlow(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
