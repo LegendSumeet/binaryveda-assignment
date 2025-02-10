@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Assignment',
-      theme: brightness == Brightness.light ? theme.light() : theme.dark(),
+      theme:theme.light(),
       themeMode: ThemeMode.light,
       home: BlocProvider(
         create: (_) => GetIt.instance<DashboardCubit>()..loadPhotos(),
