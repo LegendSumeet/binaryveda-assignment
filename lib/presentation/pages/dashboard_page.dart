@@ -26,13 +26,17 @@ class DashboardPage extends StatelessWidget {
         elevation: 0,
         title: svg,
         actions: [
-          IconButton.filled(
-            disabledColor: Colors.red,
-            highlightColor: Colors.red,
-            focusColor: Colors.red,
-            color: Colors.red,
-            icon: const Icon(Icons.person_outline_outlined, color: Colors.white),
-            onPressed: () {},
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: CircleAvatar(
+              radius: 18, // Adjust size to match the reference
+              backgroundColor: Color(0xFFD90034), // Red background
+              child: Icon(
+                Icons.person_outline,
+                color: Colors.white, // White icon
+                size: 22, // Adjust size to match the reference
+              ),
+            ),
           ),
           IconButton(
             icon: const Icon(Icons.add),
@@ -62,6 +66,7 @@ class DashboardPage extends StatelessWidget {
                           )),
                       Text(
                         "Upload",
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 14, color: Colors.blue),
                       ),
                     ],
                   ),
@@ -74,8 +79,7 @@ class DashboardPage extends StatelessWidget {
                       Text(
                         "john.doe",
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 36,
                             ),
                       ),
                     ],
@@ -90,6 +94,7 @@ class DashboardPage extends StatelessWidget {
                           )),
                       Text(
                         "Edit",
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 14, color: Colors.blue),
                       ),
                     ],
                   ),
@@ -97,18 +102,66 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: SwitchListTile.adaptive(
-                value: true,
-                onChanged: (value) {},
-                title: Text(
-                  "My Dashboard",
-                  style: const TextStyle(
-                    fontSize: 16,
-                    decorationThickness: 1.5,
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'My Dashboard',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w300,
+                        ),
                   ),
-                ),
-                activeColor: Colors.green,
+                  Center(
+                    child: Container(
+                      width: 60,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: LinearGradient(
+                          colors: [Colors.green.shade700, Colors.green.shade400],
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                        ),
+                      ),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Positioned(
+                            left: 32, // Position exactly as in the image
+                            child: Container(
+                              width: 28,
+                              height: 28,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 6.0,
+                                    spreadRadius: 1.0,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Center(
+                                child: Container(
+                                  width: 5,
+                                  height: 5,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.green.shade900,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Divider(),
@@ -135,52 +188,49 @@ class DashboardPage extends StatelessWidget {
                       Icon(
                         LucideIcons.heart,
                         color: Colors.red,
-                        size: 24,
+                        size: 18,
                       ),
                       SizedBox(width: 6),
                       Text(
                         "120",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w300,
+                            ),
                       ),
                     ],
                   ),
-
-                  // Paper Plane Icon with Count
                   Row(
                     children: [
                       Icon(
                         LucideIcons.mousePointer,
                         color: Colors.blue,
-                        size: 24,
+                        size: 18,
                       ),
                       SizedBox(width: 6),
                       Text(
                         "43K",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w300,
+                            ),
                       ),
                     ],
                   ),
-
                   Row(
                     children: [
                       Icon(
                         LucideIcons.share2,
                         color: Colors.black87,
-                        size: 24,
+                        size: 18,
                       ),
                       SizedBox(width: 6),
                       Text(
                         "2.3K",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w300,
+                            ),
                       ),
                     ],
                   ),
@@ -188,7 +238,7 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.only(top: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -196,8 +246,8 @@ class DashboardPage extends StatelessWidget {
                     children: [
                       _buildFeatureTile(CupertinoIcons.share, "Uploads", context, isActive: true),
                       Container(
-                        height: 2,
-                        width: 64,
+                        height: 1,
+                        width: 65,
                         color: Colors.orange,
                       ),
                     ],
@@ -207,18 +257,27 @@ class DashboardPage extends StatelessWidget {
                     children: [
                       SvgPicture.asset(
                         'assets/icons.svg',
-                        width: 32,
-                        height: 32,
+                        width: 28.970731735229492,
+                        height: 34.3414421081543,
+
                         color: Colors.black,
                       ),
                       const SizedBox(height: 8),
-                      Text('Revenue'),
+                      Text('Revenue',
+                        style: GoogleFonts.barlow(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          height: 1.71,
+                          letterSpacing: 0.0,
+                          color: Colors.grey,
+                        ),
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 8),
             ImageGrid(),
           ],
         ),
@@ -231,10 +290,18 @@ class DashboardPage extends StatelessWidget {
       children: [
         Text(
           value,
+          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                fontSize: 24,
+                fontWeight: FontWeight.w300,
+              ),
         ),
         const SizedBox(height: 4),
         Text(
           label,
+          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+              ),
         ),
       ],
     );
@@ -246,9 +313,19 @@ class DashboardPage extends StatelessWidget {
         Icon(
           icon,
           size: 32,
+          color: isActive ? Colors.black : Colors.grey,
         ),
         const SizedBox(height: 8),
-        Text(label),
+        Text(
+          label,
+          style: GoogleFonts.barlow(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            height: 1.71, // Line height conversion
+            letterSpacing: 0.0,
+            color: isActive ? Colors.black : Colors.grey,
+          ),
+        )
       ],
     );
   }
